@@ -10,7 +10,7 @@
     <select id="findAll" resultType="member">
         select * from member_table
     </select>
-    <select id="login" resultType="member">
+    <select id="login" parameterType="member" resultType="member">
         select * from member_table where memberId = #{memberId} and memberPassword = #{memberPassword}
     </select>
 </mapper>

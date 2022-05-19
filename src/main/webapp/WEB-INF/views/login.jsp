@@ -12,9 +12,9 @@
 </head>
 <body>
   <h2>login-form.jsp</h2>
-  <form action="login" method="post">
+  <form action="/login" method="post">
       ID 입력 :<input type="text" name="memberId"> <br>
-      Password 입력 : <input type="text" name="memberPassword"> <br>
+      Password 입력 : <input type="password" name="memberPassword"> <br>
       <input type="submit" value="로그인">
   </form>
 </body>
