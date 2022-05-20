@@ -13,6 +13,12 @@
     <select id="login" parameterType="member" resultType="member">
         select * from member_table where memberId = #{memberId} and memberPassword = #{memberPassword}
     </select>
+    <select id="detail" parameterType="int" resultType="member">
+        select * from member_table where id = #{id}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from member_table where id = #{id}
+    </delete>
 </mapper>
 
 

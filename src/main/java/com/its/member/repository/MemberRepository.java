@@ -11,6 +11,9 @@ import java.util.List;
 public class MemberRepository {
     @Autowired
     private SqlSessionTemplate sql;
+
+
+
     public int save(MemberDTO memberDTO) {
         return sql.insert("Member.save",memberDTO);
     }
@@ -23,5 +26,15 @@ public class MemberRepository {
     public MemberDTO login(MemberDTO memberDTO) {
         System.out.println(sql.selectOne("Member.login",memberDTO));
         return sql.selectOne("Member.login",memberDTO);
+    }
+
+
+    public MemberDTO detail(int id) {
+        return sql.selectOne("Member.detail",id);
+    }
+
+
+    public int delete(int id) {
+        return sql.delete("Member.delete",id);
     }
 }

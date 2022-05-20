@@ -12,6 +12,8 @@ import java.util.List;
 public class MemberService {
     @Autowired
     public MemberRepository memberRepository;
+
+
     public boolean save(MemberDTO memberDTO) {
         int saveResult = memberRepository.save(memberDTO);
         if(saveResult>0){
@@ -28,12 +30,23 @@ public class MemberService {
     }
 
 
-    public boolean login(MemberDTO memberDTO){
+    public MemberDTO login(MemberDTO memberDTO){
         MemberDTO memberDTO1 = memberRepository.login(memberDTO);
-        if(memberDTO1==null){
-            return false;
-        }else{
+        return memberDTO1;
+    }
+
+
+    public MemberDTO detail(int id) {
+        return memberRepository.detail(id);
+    }
+
+
+    public boolean delete(int id) {
+        int deleteResult = memberRepository.delete(id);
+        if (deleteResult > 0){
             return true;
+        }else{
+            return false;
         }
     }
 }

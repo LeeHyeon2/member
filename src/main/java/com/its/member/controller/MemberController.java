@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -50,13 +52,40 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute MemberDTO memberDTO){
-        boolean loginResult = memberService.login(memberDTO);
-        if(loginResult){
+    public String login(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session){
+        MemberDTO loginResult = memberService.login(memberDTO);
+        // 세션(session)
+        if(loginResult != null){
+            model.addAttribute("loginResult",loginResult);
+            session.setAttribute("loginMemberId",loginResult.getMemberId());
+            session.setAttribute("loginId",loginResult.getId());
             return "main";
         }else {
             return "index";
         }
     }
+
+    @GetMapping("/detail")
+    public String detail(@RequestParam("id") int id , Model model){
+       MemberDTO memberDTO = memberService.detail(id);
+        model.addAttribute("member",memberDTO);
+        return "detail";
+    }
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") int id , Model model){
+        boolean deleteResult = memberService.delete(id);
+        /*List<MemberDTO> memberDTOList = memberService.findAll();
+        model.addAttribute("memberList",memberDTOList);*/
+        if(deleteResult){
+            // redirect : 컨트롤러의 메서드에서 다른 메서드의 주소를 호출
+            // redirect를 이용하여 findAll 주소 요청
+            return "redirect:/findAll"; // list값 출력
+        }
+        else {
+            return "delete-fail";
+        }
+    }
+
+
 
 }
