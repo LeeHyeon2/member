@@ -19,7 +19,7 @@
     <a href="/">index로 이동</a><br>
     <button class="btn btn-primary" onclick="location.href='/update-form'">수정</button><br>
     <button class="btn btn-danger" onclick="updateForm()">수정(함수호출)</button><br>
-    <a href="/logout"> 로그아웃</a>
+    <a href="/logout">로그아웃</a>
 
 </body>
 <script>
