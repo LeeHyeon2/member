@@ -37,4 +37,13 @@ public class MemberRepository {
     public int delete(int id) {
         return sql.delete("Member.delete",id);
     }
+
+    public int update(MemberDTO memberDTO) {
+        return sql.update("Member.update",memberDTO);
+    }
+
+
+    public String duplicateCheck(String memberId) {
+        return sql.selectOne("Member.duplicate",memberId);
+    }
 }

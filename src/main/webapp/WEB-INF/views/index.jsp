@@ -15,6 +15,8 @@
     <a href="/save-form">회원가입</a> <br>
     <a href="/login-form">로그인</a> <br>
     <a href="/findAll">목록출력</a> <br>
+    <a href="/response-test">ResponseBody Test</a><br>
+    <a href="/response-test2">ResponseBody Test2</a>
     로그인 화원 정보 : ${loginResult} <br>
     세션에 담은 memberId:${sessionScope.loginMemberId}<br>
     세션에 담은 id:${sessionScope.loginId}<br>
